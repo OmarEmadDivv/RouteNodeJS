@@ -1,0 +1,24 @@
+What is the Node.js Event Loop? 
+-> Its a mechanism makes NodeJs able to make I/O opreations with non-blocking even NodeJs is single threaded.
+
+2. What is Libuv and What Role Does It Play in Node.js?
+-> Its a library written with "C" Language, it makes NodeJs able to non-blocking,
+    it execute the Event Loop and use 4 threads as default for the libuv library 
+    and it manages the process on the 4 threads if the process sync or will block another processes it will run on one of the 4 threads
+
+3. How Does Node.js Handle Asynchronous Operations Under the Hood? 
+-> NodeJs send the "async" to Libuv library , if the process DNS/crypto files will be send to the thread pool
+
+4. What is the Difference Between the Call Stack, Event Queue, and Event Loop in Node.js? 
+-> all work together 
+    Call Stack : LIFO =  last function will be executed first (and this the only sync between them)
+    Event Queue : The ready callbacks put in the Queue and exceuted after async or its time end
+    Event Loop : It keeps his eyes on Call Stack if the call Stack is empty take the first callback in the Event Queue to exceute it
+
+5. What is the Node.js Thread Pool and How to Set the Thread Pool Size?
+-> The pararmeter in the Libuv library it the number of the threads that Libuv used to manage the async its 4 threads default and we change the number  
+    with using enviroment variable called "UV_THREADPOOL_SIZE" in terminal or in the code file and it must be modified before the process start
+
+6. How Does Node.js Handle Blocking and Non-Blocking Code Execution?
+-> if the process will block another process it will be run on the Main Thread and the other process (async / the non blocking process) will be run on the Libuv threads
+    (not all async processes will be send to Libuv => the network processes like HTTP Requests executes by the system directly (kernel level async))
