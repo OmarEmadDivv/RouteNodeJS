@@ -1,0 +1,12 @@
+{
+  "name": "assignment4",
+  "version": "1.0.0",
+  "description": "this an assignment number 5 for Route Academy in Nodejs Course",
+  "license": "ISC",
+  "author": "Omar Emadeldin",
+  "type": "commonjs",
+  "main": "ass5.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
